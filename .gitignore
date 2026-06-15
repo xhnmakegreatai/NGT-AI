@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# 本地数据库与运行产物
+*.db
+ngtai.db
+logs/

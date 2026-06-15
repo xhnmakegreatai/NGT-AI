@@ -47,6 +47,13 @@ async def lifespan(app: FastAPI):
     """应用生命周期管理"""
     logger.info("🚀 NGT-AI API 启动中...")
 
+    # 确保数据表存在(SQLite 本地开发开箱即用;生产建议用 Alembic 迁移)
+    from backend.app.db import Base, engine
+    from backend.app.models import decision as _decision  # noqa: F401
+    from backend.app.models import user as _user  # noqa: F401
+
+    Base.metadata.create_all(bind=engine)
+
     redis_client = None
     if settings.redis_url and redis_async:
         try:

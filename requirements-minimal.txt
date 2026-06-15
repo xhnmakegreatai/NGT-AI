@@ -1,35 +1,16 @@
-# ================================
-# NGT-AI 决策系统 - 最小化依赖
-# 仅包含运行MVP所需的核心依赖
-# ================================
+# NGT-AI · 最小依赖
+#
+# Mock 模式(默认):无需安装任何包——克隆后直接运行即可:
+#     python ngt_ai_mvp.py --question "你的决策问题"
+#
+# 以下依赖仅在「接入真实模型(--real-api)」时才需要:
 
-# ============ 仅测试运行（模拟模式）============
-# 无需安装任何包 - 使用Python标准库
-
-# ============ 集成真实API的最小依赖 ============
-# OpenAI API
 openai>=1.3.0
-
-# Google Gemini API
 google-generativeai>=0.3.2
-
-# Anthropic Claude API  
 anthropic>=0.8.0
-
-# HTTP客户端
 httpx>=0.25.0
-
-# 数据验证
 pydantic>=2.5.0
-
-# 配置文件处理
 pyyaml>=6.0.1
-
-# Windows控制台颜色支持
-colorama>=0.4.6
-
-# 环境变量管理
 python-dotenv>=1.0.0
-
-# JSON处理增强
 orjson>=3.9.0
+colorama>=0.4.6
