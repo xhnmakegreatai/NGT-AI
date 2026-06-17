@@ -210,3 +210,9 @@ __marimo__/
 *.db
 ngtai.db
 logs/
+
+# 依赖与运行产物(审计补充)
+node_modules/
+/output/
+*.db
+test_integration_result.json

@@ -1,5 +1,0 @@
-2025-10-16 06:18:56 - ngt-ai-app - WARNING - 配置文件不存在: config.yaml，使用默认配置
-2025-10-16 06:18:56 - ngt-ai-app - INFO - 可用的API提供器: ['openai', 'google', 'deepseek', 'qwen', 'alibaba', 'grok', 'xai']
-2025-10-16 06:18:56 - ngt-ai-app - INFO - 创建了4个模拟讨论员AI
-2025-10-16 06:18:56 - ngt-ai-app - INFO - 创建模拟裁判AI提供器
-2025-10-16 06:18:56 - ngt-ai-app - INFO - NGT-AI系统初始化完成 (使用模拟API)
