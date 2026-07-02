@@ -44,6 +44,30 @@ python ngt_ai_mvp.py --real-api --question "你的决策问题"
 - **CLI**(`ngt_ai_mvp.py`)— 核心引擎,稳定可用,Mock 模式零依赖
 - **Web 全栈**(`backend/` FastAPI + `frontend/` React+Vite)— 任务管理 / 决策可视化脚手架
 
+## 作为 A2A 智能体接入(Agent2Agent)
+
+NGT-AI 可以暴露成一个符合 **[A2A 协议](https://a2a-protocol.org)** 的智能体,让别的系统/智能体用统一标准调用它做决策,而无需了解内部 6 阶段与异构模型细节。见 `a2a_server.py`。
+
+```bash
+pip install fastapi "uvicorn[standard]"          # 核心引擎 Mock 模式仍零依赖
+uvicorn a2a_server:app --host 0.0.0.0 --port 4340
+# 用真实多模型(需在 config.yaml 配 key):  NGT_A2A_REAL=1 uvicorn a2a_server:app --port 4340
+```
+
+- **Agent Card(发现)**:`GET /.well-known/agent.json`
+- **A2A 端点(JSON-RPC 2.0)**:`POST /a2a`,方法 `message/send`
+
+发一个决策问题,拿回一个 Task,artifact 里是决策报告:
+
+```bash
+curl -s -X POST http://localhost:4340/a2a -H 'content-type: application/json' -d '{
+  "jsonrpc":"2.0","id":"1","method":"message/send",
+  "params":{"message":{"role":"user","messageId":"m1",
+    "parts":[{"kind":"text","text":"公司该用强制返岗还是永久远程?"}]}}}'
+```
+
+> 定位:**MCP = 智能体↔工具;A2A = 智能体↔智能体**。这一层让 NGT 成为可被编排的决策节点。
+
 ## 现状与局限(诚实说明)
 
 - ✅ **CLI 引擎可用**:6 阶段全实现、异步并发、Mock 零依赖;克隆即可跑通。
